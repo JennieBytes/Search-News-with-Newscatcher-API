@@ -4,12 +4,12 @@ menu.forEach((menu) =>
 );
 const getLatestNews = async () => {
   let url = new URL(
-    "https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business"
+    "https://api.newscatcherapi.com/v2/latest_headlines?countries=CA&topic=business"
   );
   console.log(url);
 
   let header = new Headers({
-    // "x-api-key": "84KiV3HrOWlXN5HbVYuPOWt_LRDMj2iYfxikTDr_PXg",
+    "x-api-key": "84KiV3HrOWlXN5HbVYuPOWt_LRDMj2iYfxikTDr_PXg",
   });
   let response = await fetch(url, { headers: header });
   let data = await response.json();
@@ -19,10 +19,22 @@ const getLatestNews = async () => {
   render();
 };
 
-//PAUSED HERE: currently adding click events to the menu items (news categories).
-//we looked up the queries to add them
-const getNewsByTopic = (event) => {
+const getNewsByTopic = async (event) => {
   console.log("clicked", event.target.textContents);
+
+  let topic = event.target.textContent.toLowerCase();
+  let url = new URL(
+    `https://api.newscatcherapi.com/v2/latest_headlines?countries=CA&page_size=10&topic=${topic}`
+  );
+  let header = new Headers({
+    "x-api-key": "84KiV3HrOWlXN5HbVYuPOWt_LRDMj2iYfxikTDr_PXg",
+  });
+  let response = await fetch(url, { headers: header });
+  let data = await response.json();
+  newsArray = data.articles;
+  render();
+
+  console.log(data);
 };
 
 const render = () => {
