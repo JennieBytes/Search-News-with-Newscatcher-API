@@ -1,6 +1,11 @@
 .search-box-area {
 	margin-top: 2rem;
 }
+.search-box-area input,
+.search-box-area button {
+	display: inline-block;
+	vertical-align: middle;
+}
 
 .headline {
 	margin-top: 2rem;
@@ -40,4 +45,10 @@
 .news-articles {
 	margin: 0.5rem;
 	border-bottom: 2px solid black;
+}
+
+.nav-bar {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
 }

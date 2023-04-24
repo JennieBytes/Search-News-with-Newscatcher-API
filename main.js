@@ -170,5 +170,12 @@ const moveToPage = (pageNum) => {
 
 let searchButton = document.getElementById("search-button");
 searchButton.addEventListener("click", getNewsByKeyword);
+searchButton.addEventListener("mouseover", function () {
+	searchButton.classList.toggle("btn-success");
+});
+
+searchButton.addEventListener("mouseout", function () {
+	searchButton.classList.toggle("btn-success");
+});
 
 getLatestNews();
